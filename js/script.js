@@ -3,7 +3,7 @@ let songs;
 let currFolder;
 async function getsongs(folder) {
     currFolder = folder;
-    let a = await fetch(`/${folder}/`);
+    let a = await fetch(`https://65aafaaff147bb19f65d1736--funny-khapse-876315.netlify.app/${folder}/`);
     let response = await a.text();
     let div = document.createElement('div');
     div.innerHTML = response;
@@ -13,7 +13,7 @@ async function getsongs(folder) {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith('.mp3')) {
-            let songName = element.href.split(`/${folder}/`)[1];
+            let songName = element.href.split(`https://65aafaaff147bb19f65d1736--funny-khapse-876315.netlify.app/${folder}/`)[1];
             songName = songName;
             songs.push(songName);
         }
@@ -116,7 +116,7 @@ async function displayAlbums() {
 }
 
 async function main() {
-    songs = await getsongs("songs/CS");
+    songs = await getsongs("songs");
     Playaudio(songs[0] , true)
 
     play.addEventListener("click", (event) =>{
