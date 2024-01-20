@@ -3,19 +3,16 @@ let songs;
 let currFolder;
 async function getsongs(folder) {
     currFolder = folder;
-    let a = await fetch(`https://65aafaaff147bb19f65d1736--funny-khapse-876315.netlify.app/${folder}/`);
+    let a = await fetch(`/${folder}/`)
     let response = await a.text();
-    let div = document.createElement('div');
+    let div = document.createElement("div")
     div.innerHTML = response;
-    let as = div.getElementsByTagName('a');
-    let songs = [];
-
+    let as = div.getElementsByTagName("a")
+    songs = []
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
-        if (element.href.endsWith('.mp3')) {
-            let songName = element.href.split(`https://65aafaaff147bb19f65d1736--funny-khapse-876315.netlify.app/${folder}/`)[1];
-            songName = songName;
-            songs.push(songName);
+        if (element.href.endsWith(".mp3")) {
+            songs.push(element.href.split(`/${folder}/`)[1])
         }
     }
   
